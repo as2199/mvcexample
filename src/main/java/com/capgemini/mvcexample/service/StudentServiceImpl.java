@@ -14,7 +14,6 @@ public class StudentServiceImpl implements StudentService {
 	@Autowired
 	private StudentRepository repository;	
 	
-	@Override
 	public Student getStudentById(Integer studentId) {
 		Optional<Student> optStudent = repository.findById(studentId);
 		if(optStudent.isPresent()) {
@@ -23,24 +22,20 @@ public class StudentServiceImpl implements StudentService {
 		return null;
 	}
 
-	@Override
 	public List<Student> getStudents() {
 		
 		return (List<Student>) repository.findAll();
 	}
 
-	@Override
 	public Student addStudent(Student student) {
 		
 		return repository.save(student);
 	}
 
-	@Override
 	public void deleteStudent(Integer studnetId) {
 		repository.deleteById(studnetId);
 	}
 
-	@Override
 	public Student updateStudent(Student student, Integer studentId) {
 		Optional<Student> studentData = repository.findById(studentId);
 		if (studentData.isPresent()) {
